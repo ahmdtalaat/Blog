@@ -28,9 +28,14 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a href="#" class="nav-item nav-link">Login</a>
-              <a href="{% url 'users:signup' %}" class="nav-item nav-link">Register</a>
 
+              {% if user.is_authenticated and user.is_active %}
+                <a href="{% url 'users:profile' %}" class="nav-item nav-link">{{user.username| title}}</a>
+                <a href="{% url 'users:logout' %}" class="nav-item nav-link">Logout</a>
+                {%else%}
+                <a href="{% url 'users:login' %}" class="nav-item nav-link">Login</a>
+                <a href="{% url 'users:signup' %}" class="nav-item nav-link">Register</a>
+              {% endif %}
             </div>
           </div>
         </div>
