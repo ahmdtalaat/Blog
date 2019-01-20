@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+  <title>{{post.title}}</title>
+{% endblock title %}
+
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <h2>
+        <a class="article-title" href="#">{{ post.title }}</a>
+      </h2>
+      <p class="article-content">{{ post.content }}</p>
+    </div>
+
+    {% if user.username == post.author.username %}
+      <button  class="btn btn-outline-info"><a class="nav-link nav-item" href="{% url 'blog:post_update' post.slug  %} ">Update</a></button>
+      <button  class="btn btn-outline-info"><a class="nav-link nav-item" href="{% url 'blog:post_delete' post.slug %} ">Delete</a></button>
+    {% endif %}
+
+  </article>
+
+{% endblock content %}

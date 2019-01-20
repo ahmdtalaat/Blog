@@ -30,6 +30,7 @@
             <div class="navbar-nav">
 
               {% if user.is_authenticated and user.is_active %}
+                <a href="{% url 'blog:create_post' %}" class="nav-item nav-link">New Post</a>
                 <a href="{% url 'users:profile' %}" class="nav-item nav-link">{{user.username| title}}</a>
                 <a href="{% url 'users:logout' %}" class="nav-item nav-link">Logout</a>
                 {%else%}

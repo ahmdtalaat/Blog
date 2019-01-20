@@ -27,3 +27,7 @@ class Post(models.Model):
         if not self.slug:
             self.slug = self._get_unique_slug()
         super(Post, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('blog:post_detail', kwargs={'slug': self.slug})
