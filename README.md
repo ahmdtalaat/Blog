@@ -23,20 +23,5 @@ pytz==2018.9
 toml==0.10.0
 yapf==0.25.0
 
-Give examples
-Installing
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-Give the example
-And repeat
-
-until finished
-End with an example of getting some data out of the system or using it for a little demo
-
-Running the tests
-I didn't write the tests for my application yet.
-
 Authors
 Ahmed Talaat
