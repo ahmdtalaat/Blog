@@ -6,7 +6,7 @@ from django.utils.text import slugify
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, unique=True)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(unique=True)
@@ -14,18 +14,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def _get_unique_slug(self):
-        slug = slugify(self.title)
-        unique_slug = slug
-        num = 1
-        while Post.objects.filter(slug=unique_slug).exists():
-            unique_slug = f'{slug}-{num}'
-            num += 1
-        return unique_slug
-
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = self._get_unique_slug()
+        slug = slugify(self.title)
+        if self.slug != slug:
+            self.slug = slug
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):

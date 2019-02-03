@@ -15,7 +15,7 @@
 
     {% if user.username == post.author.username %}
       <button  class="btn btn-outline-info"><a class="nav-link nav-item" href="{% url 'blog:post_update' post.slug  %} ">Update</a></button>
-      <button  class="btn btn-outline-info"><a class="nav-link nav-item" href="{% url 'blog:post_delete' post.slug %} ">Delete</a></button>
+      <button  class="btn btn-outline-danger"><a class="nav-link nav-item" href="{% url 'blog:post_delete' post.slug %} ">Delete</a></button>
     {% endif %}
 
   </article>
